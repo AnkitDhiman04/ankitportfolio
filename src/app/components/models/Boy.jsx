@@ -56,6 +56,7 @@ export function Boy(props) {
   // }, [isIntroAnimationDone]);
 
   
+
 useEffect(() => {
   if (isIntroAnimationDone) {
     const handleMove = (clientX, clientY) => {
@@ -70,7 +71,12 @@ useEffect(() => {
         1
       );
 
-      group.current.getObjectByName("Head").lookAt(target);
+      const head = group.current?.getObjectByName("Head");
+
+      if (head) {
+        head.lookAt(target);
+      }
+
       group.current.rotation.y = target.x * 0.5;
     };
 
@@ -78,15 +84,15 @@ useEffect(() => {
       handleMove(event.clientX, event.clientY);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-
     const handleTouchMove = (event) => {
       if (event.touches.length === 0) return;
 
       const touch = event.touches[0];
+
       handleMove(touch.clientX, touch.clientY);
     };
 
+    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("touchmove", handleTouchMove, {
       passive: true,
     });
@@ -97,6 +103,8 @@ useEffect(() => {
     };
   }
 }, [isIntroAnimationDone]);
+
+
 
 
   return (
