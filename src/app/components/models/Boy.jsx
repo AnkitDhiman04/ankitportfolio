@@ -105,8 +105,6 @@ useEffect(() => {
 }, [isIntroAnimationDone]);
 
 
-
-
   return (
     <group {...props} ref={group} dispose={null}>
       <primitive object={nodes.Hips} />
