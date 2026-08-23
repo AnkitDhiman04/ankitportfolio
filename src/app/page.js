@@ -12,7 +12,7 @@ import Testimonials from "./sections/Testimonials";
 export default function Home() {
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
       <NavBar />
       <SideBar />
       <Hero/>
