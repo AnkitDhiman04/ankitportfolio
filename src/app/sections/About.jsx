@@ -3,12 +3,12 @@
 import { Canvas } from '@react-three/fiber'
 import GradientSpheres from '../components/GradientSpheres'
 import TitleHeader from '../components/TitleHeader'
-import { Alien } from '../components/models/Alien'
 import { OrbitControls } from '@react-three/drei'
 import { bentoSocialLinks } from '../constants'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { My } from '../components/models/My'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -79,11 +79,15 @@ With a focus on clean code and seamless user experiences, I thrive on turning cr
 
             {/* 3D alien model */}
             <div className='md:col-span-5 col-span-12 row-span-5'>
-              <div className='bg-[#c8d751] w-full h-full rounded-xl'>
+              <div className='bg-[#d2d3d1] w-full h-full rounded-xl'>
                 <div className='w-full h-full'>
-                  <Canvas>
+                  <Canvas gl={{ alpha: true }} camera={{ position: [0, 0, 6], fov: 40 }}>
                     <OrbitControls enableZoom={false} />
-                    <Alien scale={1.1} position={[-0.9, -2.5, 0]} rotation={[1.7, -0.1, 0]} />
+                    <ambientLight />
+      <directionalLight position={[-2, 0, 3]} intensity={2} color={"#A855F7"} />
+      <directionalLight position={[2, 0, 3]} intensity={2} color={"#38BDF8"} />
+
+                     <My scale={10} rotation={[0,4.7,0]} position={[0,-8,0]}  />
                   </Canvas>
                 </div>
               </div>
