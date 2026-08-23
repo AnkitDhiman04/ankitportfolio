@@ -37,22 +37,67 @@ export function Boy(props) {
     }
   }, [progress]);
 
-  useEffect(() => {
-    if (isIntroAnimationDone) {
-      const handleMouseMove = (event) => {
-        const { innerWidth, innerHeight } = window;
-        mouse.current.x = (event.clientX / innerWidth) * 2 - 1; // Normalize between -1 and 1
-        mouse.current.y = -(event.clientY / innerHeight) * 2 + 1; // Normalize between -1 and 1
+  // useEffect(() => {
+  //   if (isIntroAnimationDone) {
+  //     const handleMouseMove = (event) => {
+  //       const { innerWidth, innerHeight } = window;
+  //       mouse.current.x = (event.clientX / innerWidth) * 2 - 1; // Normalize between -1 and 1
+  //       mouse.current.y = -(event.clientY / innerHeight) * 2 + 1; // Normalize between -1 and 1
 
-        const target = new THREE.Vector3(mouse.current.x, mouse.current.y, 1);
-        group.current.getObjectByName("Head").lookAt(target);
-        group.current.rotation.y = target.x * 0.5;
-      };
+  //       const target = new THREE.Vector3(mouse.current.x, mouse.current.y, 1);
+  //       group.current.getObjectByName("Head").lookAt(target);
+  //       group.current.rotation.y = target.x * 0.5;
+  //     };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, [isIntroAnimationDone]);
+  //     window.addEventListener("mousemove", handleMouseMove);
+
+  //     return () => window.removeEventListener("mousemove", handleMouseMove);
+  //   }
+  // }, [isIntroAnimationDone]);
+
+  
+useEffect(() => {
+  if (isIntroAnimationDone) {
+    const handleMove = (clientX, clientY) => {
+      const { innerWidth, innerHeight } = window;
+
+      mouse.current.x = (clientX / innerWidth) * 2 - 1;
+      mouse.current.y = -(clientY / innerHeight) * 2 + 1;
+
+      const target = new THREE.Vector3(
+        mouse.current.x,
+        mouse.current.y,
+        1
+      );
+
+      group.current.getObjectByName("Head").lookAt(target);
+      group.current.rotation.y = target.x * 0.5;
+    };
+
+    const handleMouseMove = (event) => {
+      handleMove(event.clientX, event.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const handleTouchMove = (event) => {
+      if (event.touches.length === 0) return;
+
+      const touch = event.touches[0];
+      handleMove(touch.clientX, touch.clientY);
+    };
+
+    window.addEventListener("touchmove", handleTouchMove, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }
+}, [isIntroAnimationDone]);
+
 
   return (
     <group {...props} ref={group} dispose={null}>
