@@ -3,7 +3,7 @@ import { navItems } from "../constants";
 const NavBar = () => {
   return (
     <div className="w-full flex-center fixed z-50 top-0 left-0 md:px-10 px-5">
-      <div className="container md:py-10 py-5 flex items-center justify-between">
+      <div className="container md:pt-4 pt-3 md:pb-10 pb-5 flex items-center justify-between">
         <img
           // src="/images/logo.png"
           src="/images/ankit-logo.png"
