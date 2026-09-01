@@ -80,12 +80,12 @@ With a focus on clean code and seamless user experiences, I thrive on turning cr
             {/* 3D alien model */}
             <div className='md:col-span-5 col-span-12 row-span-5'>
               <div className='bg-[#d2d3d1] w-full h-full rounded-xl'>
-                <div className='w-full h-full'>
+                <div className='w-full h-[20rem] md:h-full'>
                   <Canvas gl={{ alpha: true }} camera={{ position: [0, 0, 6], fov: 40 }}>
                     <OrbitControls enableZoom={false} />
                     <ambientLight />
-      <directionalLight position={[-2, 0, 3]} intensity={2} color={"#A855F7"} />
-      <directionalLight position={[2, 0, 3]} intensity={2} color={"#38BDF8"} />
+      <directionalLight position={[-2, 0, 3]} intensity={2} color={"#d2d3d1"} />
+      <directionalLight position={[2, 0, 3]} intensity={2} color={"#d2d3d1"} />
 
                      <My scale={10} rotation={[0,4.7,0]} position={[0,-8,0]}  />
                   </Canvas>

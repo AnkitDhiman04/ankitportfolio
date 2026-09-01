@@ -5,9 +5,9 @@ const Footer = () => {
     <div className="w-full flex-center flex-col md:gap-10 gap-7 bg-black-300 py-10">
       <div>
         <img
-          src="/images/logo.png"
+          src="/images/ankit-logo.png"
           alt="logo"
-          className="w-7 h-7 object-cover object-center"
+          className="w-20 md:w-25 h-20 md:h-25 object-cover object-center"
         />
       </div>
       <div className="flex items-center md:gap-16 gap-8">
