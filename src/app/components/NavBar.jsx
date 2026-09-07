@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { navItems } from "../constants";
 
 const NavBar = () => {
@@ -18,9 +19,9 @@ const NavBar = () => {
                after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left
                 hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300"
             >
-              <a className="gradient-title text-lg" href={item.href}>
+              <Link className="gradient-title text-lg lg:text-2xl tracking-widest font-semibold" href={item.href}>
                 {item.name}
-              </a>
+              </Link>
             </div>
           ))}
         </div>

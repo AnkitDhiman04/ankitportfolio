@@ -59,7 +59,7 @@ const SideBar = () => {
                 className="side-bar-item opacity-0 cursor-pointer hover:underline transition-all duration-700"
               >
                 <Link
-                  className="gradient-title text-2xl font-bold"
+                  className="gradient-title text-2xl tracking-widest font-semibold"
                   href={item.href}
                   onClick={()=>setIsOpen(false)}
                 >
