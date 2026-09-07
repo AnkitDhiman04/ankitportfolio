@@ -34,31 +34,38 @@ const ContactForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
+
     try {
-      const payload = {
-        from_name: data.name,
-        to_name: "Full Stack Developer",
-        message: data.message,
-        reply_to: data.email,
-        subject: data.subject,
-      };
+      // WhatsApp message
+      const whatsappMessage = `
+🔔 New Portfolio Contact
+👤 Name: ${data.name}
+📧 Email: ${data.email}
+📌 Subject: ${data.subject}
+💬 Message:
+${data.message}
+    `.trim();
 
-      const serviceID = import.meta.env.VITE_EMAIL_SERVICE_ID;
-      const templateID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
-      const userID = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+      // Apna WhatsApp number international format me daalo
+      // Example India: 919876543210
+      const whatsappNumber = "916265500635";
 
-      await emailjs.send(serviceID, templateID, payload, {
-        publicKey: userID,
-      });
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
+
+      // WhatsApp open karega
+      window.open(whatsappURL, "_blank");
+
+      reset(initialValues);
     } catch (error) {
-      console.log("FAILED...", error);
+      console.error("FAILED...", error);
       alert("Failed to send message, please try again.");
     } finally {
       setLoading(false);
-      reset(initialValues);
-      alert("Message sent successfully!");
     }
   };
+
 
   return (
     <div className="flex-center">

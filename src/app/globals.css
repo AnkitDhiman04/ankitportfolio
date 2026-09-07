@@ -280,6 +280,10 @@ section {
     background: rgba(23, 21, 31, 0.7);
     backdrop-filter: blur(10px);
   }
+
+  .button-active {
+    background-color: blue;
+  }
 }
 
 @keyframes wander-left {
@@ -340,5 +344,12 @@ section {
 
   .marquee-box {
     animation: marquee 20s linear infinite;
+  }
+}
+
+/* Mobile */
+@media (hover: none) and (pointer: coarse) {
+  .button:active {
+    background-color: blue;
   }
 }

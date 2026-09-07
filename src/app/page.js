@@ -1,4 +1,4 @@
-import Loader from "./components/Loader";
+// import Loader from "./components/Loader";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 import About from "./sections/About";
