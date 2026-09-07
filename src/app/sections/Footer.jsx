@@ -25,7 +25,7 @@ const Footer = () => {
         ))}
       </div>
       <p className="font-regular md:text-lg text-sm">
-        2025 © All rights reserved.
+        {new Date().getFullYear()} © All rights reserved.
       </p>
     </div>
   );
