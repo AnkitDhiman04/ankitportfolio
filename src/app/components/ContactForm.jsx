@@ -38,13 +38,10 @@ const ContactForm = () => {
     try {
       // WhatsApp message
       const whatsappMessage = `
-🔔 New Portfolio Contact
-👤 Name: ${data.name}
-📧 Email: ${data.email}
-📌 Subject: ${data.subject}
-💬 Message:
-${data.message}
-    `.trim();
+Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
+Message: ${data.message} `.trim();
 
       // Apna WhatsApp number international format me daalo
       // Example India: 919876543210
